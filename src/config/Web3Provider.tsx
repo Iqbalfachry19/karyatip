@@ -3,7 +3,7 @@ import { darkTheme, defaultConfig, XellarKitProvider } from "@xellar/kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { liskSepolia } from "viem/chains";
 const config = defaultConfig({
-  appName: "Xellar",
+  appName: "idqrx",
   // Required for WalletConnect
   walletConnectProjectId: import.meta.env.WALLET_CONNECT_PROJECT_ID,
 
