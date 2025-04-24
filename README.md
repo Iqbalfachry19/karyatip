@@ -15,8 +15,8 @@
 - **Frontend**: React.js, Tailwind CSS
 - **Routing**: React Router DOM
 - **State Management**: useState, useEffect (React Hooks)
-- **Crypto Integration**: (Contoh: Metamask / WalletConnect – _tambahkan jika ada_)
-- **Deployment**: Vercel / Netlify / (tambahkan sesuai yang digunakan)
+- **Crypto Integration**: IDRX, LISK SEPOLIA, XELLAR KIT
+
 
 ## 📦 Instalasi
 
