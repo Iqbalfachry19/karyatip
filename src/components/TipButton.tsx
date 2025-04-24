@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-const TipButton = ({ writerAddress }) => {
+interface TipButtonProps {
+  writerAddress: string;
+}
+
+const TipButton: React.FC<TipButtonProps> = ({ writerAddress }) => {
   const [amount, setAmount] = useState("");
 
   const handleTip = async () => {
     console.log(`Sending ${amount} IDRX to ${writerAddress}`);
 
-    try {
-      alert(`Successfully tipped ${amount} IDRX to ${writerAddress}`);
-    } catch (error) {
-      alert("Error sending tip");
-    }
+    alert(`Berhasil memberi tip sebesar ${amount} IDRX ke ${writerAddress}`);
   };
 
   return (
