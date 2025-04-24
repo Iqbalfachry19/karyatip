@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import TipButton from "../components/TipButton";
 import ZKProofForm from "../components/ZKProofForm";
-import ClaimButton from "../components/ClaimButton";
+// import ClaimButton from "../components/ClaimButton";
 
 function TipWriter() {
   const [writerAddress, setWriterAddress] = useState<string | null>(null);
@@ -43,9 +43,9 @@ function TipWriter() {
                 <div className="mt-4">
                   <ZKProofForm writerAddress={writerAddress} />
                 </div>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <ClaimButton writerAddress={writerAddress} />
-                </div>
+                </div> */}
               </>
             )}
           </section>
