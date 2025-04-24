@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import HeroImage from "../assets/karyatip.png"; // adjust the path as needed

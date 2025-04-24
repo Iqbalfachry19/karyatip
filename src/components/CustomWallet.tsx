@@ -1,5 +1,4 @@
 import { ConnectButton } from "@xellar/kit";
-import React from "react";
 
 function CustomWallet() {
   return (

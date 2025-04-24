@@ -1,4 +1,3 @@
-import React from "react";
 import { ConnectButton } from "@xellar/kit";
 import { NavLink, useNavigate } from "react-router-dom";
 
