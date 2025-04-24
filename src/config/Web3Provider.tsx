@@ -3,12 +3,12 @@ import { darkTheme, defaultConfig, XellarKitProvider } from "@xellar/kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { liskSepolia } from "viem/chains";
 const config = defaultConfig({
-  appName: "idqrx",
+  appName: "Xellar",
   // Required for WalletConnect
-  walletConnectProjectId: import.meta.env.WALLET_CONNECT_PROJECT_ID,
+  walletConnectProjectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,
 
   // Required for Xellar Passport
-  xellarAppId: import.meta.env.XELLAR_APP_ID,
+  xellarAppId: import.meta.env.VITE_XELLAR_APP_ID,
   xellarEnv: "sandbox",
   chains: [liskSepolia],
 }) as Config;
