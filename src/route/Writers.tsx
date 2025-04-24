@@ -3,9 +3,7 @@ import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
 function Writers() {
-  const [activeTab, setActiveTab] = useState<
-    "writers" | "writing" | "tipWriters"
-  >("writers");
+  const [activeTab] = useState<"writers" | "writing" | "tipWriters">("writers");
   const navigate = useNavigate();
   const writers = [
     {
@@ -30,7 +28,7 @@ function Writers() {
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
       {/* Topbar */}
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header />
 
       {/* Content Area */}
       <main className="max-w-4xl mx-auto px-4 py-6">

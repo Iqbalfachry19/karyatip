@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 
 const RichTextEditor = () => {
   const editorRef = useRef<HTMLDivElement>(null);
@@ -79,7 +79,6 @@ const RichTextEditor = () => {
         className="p-6 border border-gray-300 rounded-lg min-h-[300px] text-gray-900 bg-white overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
         contentEditable
         suppressContentEditableWarning
-        placeholder="Start writing here..."
       >
         <p>Start writing here...</p>
       </div>

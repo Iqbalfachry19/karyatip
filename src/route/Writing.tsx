@@ -3,13 +3,11 @@ import Header from "../components/Header";
 import RichTextEditor from "../components/RichTextEditor";
 
 function Writing() {
-  const [activeTab, setActiveTab] = useState<
-    "writers" | "writing" | "tipWriters"
-  >("writing");
+  const [activeTab] = useState<"writers" | "writing" | "tipWriters">("writing");
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
       {/* Topbar */}
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header />
 
       {/* Content Area */}
       <main className="max-w-4xl mx-auto px-4 py-6">

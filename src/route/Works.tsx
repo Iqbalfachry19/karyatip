@@ -1,19 +1,14 @@
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
-import { useState } from "react";
 
 const WorkPage = () => {
   const { title } = useParams();
   const decodedTitle = decodeURIComponent(title || "");
 
-  const [activeTab, setActiveTab] = useState<
-    "writers" | "writing" | "tipWriters"
-  >("writers");
-
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
       {/* Topbar */}
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header />
       <div className="max-w-3xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-md">
         {/* Main content */}
         <main className="max-w-4xl mx-auto px-4 py-6">

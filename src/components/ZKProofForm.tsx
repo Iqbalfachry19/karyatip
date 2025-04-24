@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-const ZKProofForm = ({ writerAddress }) => {
+interface ZKProofFormProps {
+  writerAddress: string;
+}
+
+const ZKProofForm: React.FC<ZKProofFormProps> = ({ writerAddress }) => {
   const [proof, setProof] = useState("");
 
   const handleSubmitProof = () => {
@@ -9,7 +13,7 @@ const ZKProofForm = ({ writerAddress }) => {
     try {
       alert(`ZK proof submitted for ${writerAddress}`);
     } catch (error) {
-      alert("Error submitting ZK proof");
+      alert(`Error submitting ZK proof ${error}`);
     }
   };
 

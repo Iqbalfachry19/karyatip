@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
@@ -29,9 +29,7 @@ const writerData = [
 const ProfilePage = () => {
   const { name } = useParams<{ name: string }>();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<
-    "writers" | "writing" | "tipWriters"
-  >("writers");
+
   const writer = writerData.find((w) => w.name.toString() === name);
 
   if (!writer) {
@@ -52,7 +50,7 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header />
 
       <div className="max-w-3xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-md">
         <h1 className="text-3xl font-bold text-orange-600 mb-2">

@@ -1,14 +1,8 @@
 import React from "react";
 import { ConnectButton } from "@xellar/kit";
-import Web3Connect from "../config/Web3Connect";
 import { NavLink, useNavigate } from "react-router-dom";
 
-type HeaderProps = {
-  activeTab: "writers" | "writing" | "tipWriters";
-  setActiveTab: (tab: "writers" | "writing" | "tipWriters") => void;
-};
-
-function Header({ activeTab, setActiveTab }: HeaderProps) {
+function Header() {
   const navigate = useNavigate();
   return (
     <header className="sticky top-0 bg-white shadow-md z-10">

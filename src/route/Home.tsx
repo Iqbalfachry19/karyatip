@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import HeroImage from "../assets/karyatip.png"; // adjust the path as needed
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState<
-    "writers" | "writing" | "tipWriters"
-  >("writers");
   const navigate = useNavigate();
   const writers = [
     {
@@ -31,7 +28,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header />
 
       <main className="max-w-6xl mx-auto px-4 py-10">
         {/* Hero Section */}

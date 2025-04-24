@@ -1,14 +1,14 @@
 import React from "react";
 
-const ClaimButton = ({ writerAddress }) => {
+interface ClaimButtonProps {
+  writerAddress: string;
+}
+
+const ClaimButton = ({ writerAddress }: ClaimButtonProps) => {
   const handleClaim = async () => {
     console.log(`Claiming tips for writer at ${writerAddress}`);
 
-    try {
-      alert(`Successfully claimed tips for writer ${writerAddress}`);
-    } catch (error) {
-      alert("Error claiming tips");
-    }
+    alert(`Successfully claimed tips for writer ${writerAddress}`);
   };
 
   return (
