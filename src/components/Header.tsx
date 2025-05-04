@@ -1,5 +1,7 @@
 import { ConnectButton } from "@xellar/kit";
 import { NavLink, useNavigate } from "react-router-dom";
+import { ConnectedButton } from "./ConnectedButton";
+import { Address } from "viem";
 
 function Header() {
   const navigate = useNavigate();
@@ -13,7 +15,23 @@ function Header() {
           KaryaTip
         </h1>
         <div className="flex items-center space-x-4">
-          <ConnectButton />
+          <ConnectButton.Custom>
+            {({ openConnectModal, account, isConnected, openProfileModal }) => {
+              if (!isConnected) {
+                return (
+                  <button className="text-white" onClick={openConnectModal}>
+                    Connect Wallet
+                  </button>
+                );
+              }
+              return (
+                <ConnectedButton
+                  address={account?.address as Address}
+                  onClick={openProfileModal}
+                />
+              );
+            }}
+          </ConnectButton.Custom>
           {/* <Web3Connect /> */}
         </div>
       </div>

@@ -7,20 +7,23 @@ import WorkPage from "./route/Works";
 import Writing from "./route/Writing";
 import TipWriter from "./route/TipWriter";
 import Writers from "./route/Writers";
+import { ThirdwebProvider } from "thirdweb/react";
 function App() {
   return (
-    <Web3Provider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/writers" element={<Writers />} />
-          <Route path="/writing" element={<Writing />} />
-          <Route path="/tipWriters" element={<TipWriter />} />
-          <Route path="/profile/:name" element={<ProfilePage />} />
-          <Route path="/work/:title" element={<WorkPage />} />
-        </Routes>
-      </BrowserRouter>
-    </Web3Provider>
+    <ThirdwebProvider>
+      <Web3Provider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/writers" element={<Writers />} />
+            <Route path="/writing" element={<Writing />} />
+            <Route path="/tipWriters" element={<TipWriter />} />
+            <Route path="/profile/:name" element={<ProfilePage />} />
+            <Route path="/work/:title" element={<WorkPage />} />
+          </Routes>
+        </BrowserRouter>
+      </Web3Provider>
+    </ThirdwebProvider>
   );
 }
 

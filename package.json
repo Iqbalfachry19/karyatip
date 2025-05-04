@@ -20,7 +20,9 @@
     "@tiptap/react": "^2.11.7",
     "@tiptap/starter-kit": "^2.11.7",
     "@xellar/kit": "^2.0.6",
+    "dompurify": "^3.2.5",
     "draft-js": "^0.11.7",
+    "pinata": "^2.2.1",
     "prosemirror-model": "^1.25.1",
     "prosemirror-state": "^1.4.3",
     "prosemirror-view": "^1.39.2",
@@ -30,6 +32,7 @@
     "slate": "^0.112.0",
     "slate-react": "^0.112.1",
     "tailwindcss": "^4.1.4",
+    "thirdweb": "^5.96.7",
     "viem": "^2.27.2",
     "wagmi": "^2.14.16"
   },

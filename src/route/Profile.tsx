@@ -72,13 +72,20 @@ const ProfilePage = () => {
             </li>
           ))}
         </ul>
-
-        <button
-          onClick={() => navigate("/")}
-          className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
-        >
-          Back to Home
-        </button>
+        <div className="space-x-2">
+          <button
+            onClick={() => navigate("/")}
+            className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+          >
+            Back to Home
+          </button>
+          <button
+            onClick={() => navigate(`/tipWriters`)}
+            className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
+          >
+            Tip
+          </button>
+        </div>
       </div>
     </div>
   );
