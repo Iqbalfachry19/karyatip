@@ -83,12 +83,26 @@ const RichTextEditor = () => {
 
       <div
         ref={editorRef}
-        className="p-6 border border-gray-300 rounded-lg min-h-[300px] text-gray-900 bg-white overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="relative p-6 border border-gray-300 rounded-lg min-h-[300px] text-gray-900 bg-white overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
         contentEditable
         suppressContentEditableWarning
-      >
-        <p>Start writing here...</p>
-      </div>
+        data-placeholder="Start typing your rich content here..."
+        onInput={(e) => {
+          const el = e.currentTarget;
+          el.setAttribute(
+            "data-empty",
+            el.innerText.trim() === "" ? "true" : "false"
+          );
+        }}
+        onBlur={(e) => {
+          const el = e.currentTarget;
+          el.setAttribute(
+            "data-empty",
+            el.innerText.trim() === "" ? "true" : "false"
+          );
+        }}
+        data-empty="true"
+      ></div>
 
       <div className="mt-6 flex justify-center">
         <button
