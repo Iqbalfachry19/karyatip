@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import RichTextEditor from "../components/RichTextEditor";
-import { MediaRenderer } from "thirdweb/react";
-import { upload } from "thirdweb/storage";
-import { client } from "../config/Thirdweb";
+
 import { karyatipABI } from "../utils/abi";
 import { KARYATIP_ADDRESS } from "../constants";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
@@ -15,13 +13,14 @@ import { useNavigate } from "react-router-dom";
 function Writing() {
   const navigate = useNavigate();
   const [activeTab] = useState<"writers" | "writing" | "tipWriters">("writing");
-  const [file, setFile] = useState<File | null>(null);
-  const [link, setLink] = useState("");
+
   const [isRegistered, setIsRegistered] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [authorName, setAuthorName] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
   const { writeContractAsync } = useWriteContract();
+  const [storyTitle, setStoryTitle] = useState("");
+  const [bio, setBio] = useState("");
 
   const register = async () => {
     if (!address || !authorName.trim()) return;
@@ -32,7 +31,7 @@ function Writing() {
         address: KARYATIP_ADDRESS,
         abi: karyatipABI,
         functionName: "registerAuthor",
-        args: [authorName.trim()],
+        args: [authorName.trim(), bio.trim()],
       });
 
       setIsRegistered(true);
@@ -54,7 +53,7 @@ function Writing() {
     query: { enabled: !!address },
   });
   useEffect(() => {
-    if (data?.[2] === true) {
+    if (data?.[4] === true) {
       setShowModal(false);
     }
   }, [data]);
@@ -66,18 +65,6 @@ function Writing() {
       setIsRegistered(true);
     }
   }, [address, data, isSuccess]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(e.target.files[0]);
-    }
-  };
-
-  const handleUpload = async () => {
-    if (!file) return;
-    const uri = await upload({ client, files: [file] });
-    setLink(uri);
-  };
 
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans relative">
@@ -123,7 +110,7 @@ function Writing() {
               </>
             ) : (
               <>
-                {data?.[2] === false && (
+                {data?.[4] === false && (
                   <>
                     <h2 className="text-xl font-semibold text-orange-600">
                       Access Restricted
@@ -137,6 +124,13 @@ function Writing() {
                         value={authorName}
                         onChange={(e) => setAuthorName(e.target.value)}
                         placeholder="Enter your author name"
+                        className="w-full px-3 py-2 border border-orange-300 rounded-md"
+                      />
+                      <textarea
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        placeholder="Enter your bio"
+                        rows={3}
                         className="w-full px-3 py-2 border border-orange-300 rounded-md"
                       />
 
@@ -182,6 +176,8 @@ function Writing() {
                 type="text"
                 placeholder="Enter story title"
                 className="w-full p-3 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                value={storyTitle} // Binding title state
+                onChange={(e) => setStoryTitle(e.target.value)} // Update title state
               />
             </div>
 
@@ -191,35 +187,8 @@ function Writing() {
                 Story Content
               </label>
               <div className="border border-orange-300 rounded-lg">
-                <RichTextEditor />
+                <RichTextEditor title={storyTitle} />
               </div>
-            </div>
-
-            {/* Upload section */}
-            <div className="space-y-3">
-              <label className="block text-sm font-medium text-gray-700">
-                Upload Image (optional)
-              </label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                className="block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-500 file:text-white hover:file:bg-orange-600"
-              />
-              <button
-                className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
-                onClick={handleUpload}
-                disabled={!file}
-              >
-                Upload Image
-              </button>
-
-              {link && (
-                <div className="mt-4">
-                  <p className="text-sm text-gray-500 mb-1">Image Preview:</p>
-                  <MediaRenderer client={client} src={link} />
-                </div>
-              )}
             </div>
           </section>
         )}

@@ -1,29 +1,23 @@
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 import HeroImage from "../assets/karyatip.png"; // adjust the path as needed
-
+import { useReadContract } from "wagmi";
+import { KARYATIP_ADDRESS } from "../constants";
+import { karyatipABI } from "../utils/abi";
+type Work = {
+  id: bigint;
+  title: string;
+  content: string;
+  totalTips: bigint;
+};
 const Home = () => {
   const navigate = useNavigate();
-  const writers = [
-    {
-      id: 1,
-      name: "Alicia Moon",
-      address: "0x1234...",
-      works: ["The Moonlight Sonata", "Reflections in Orbit", "Crater Dreams"],
-    },
-    {
-      id: 2,
-      name: "Jonas Write",
-      address: "0x5678...",
-      works: ["Fragments of Time", "The Writer's Journey", "Chronicles of Ink"],
-    },
-    {
-      id: 3,
-      name: "Luna Verse",
-      address: "0x9abc...",
-      works: ["Stars & Stories", "Orbiting Imagination"],
-    },
-  ];
+  const { data: allWorks } = useReadContract({
+    address: KARYATIP_ADDRESS,
+    abi: karyatipABI,
+    functionName: "getAllWorks",
+  });
+  console.log(allWorks);
 
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
@@ -68,30 +62,24 @@ const Home = () => {
 
         {/* Popular Stories */}
         <section className="mt-10">
-          <h2 className="text-2xl font-semibold mb-4">Popular Stories</h2>
+          <h2 className="text-2xl font-semibold mb-4">Stories</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {writers.flatMap((writer) =>
-              writer.works.map((work, idx) => (
+            {allWorks && allWorks.length > 0 ? (
+              allWorks.map((work: Work, idx: number) => (
                 <div
-                  key={`${writer.id}-${idx}`}
+                  key={`${idx}`}
                   className="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
                 >
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {work}
+                    {work.title} {/* title */}
                   </h3>
-                  <p className="text-sm text-gray-500 mb-3">
-                    By{" "}
-                    <span
-                      className="cursor-pointer hover:text-orange-500"
-                      onClick={() => navigate(`profile/${writer.name}`)}
-                    >
-                      {writer.name}
-                    </span>
-                  </p>
+
                   <div className="space-x-2">
                     <button
                       onClick={() =>
-                        navigate(`/work/${encodeURIComponent(work)}`)
+                        navigate(
+                          `/work/${encodeURIComponent(work.id.toString())}`
+                        )
                       }
                       className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
                     >
@@ -106,6 +94,8 @@ const Home = () => {
                   </div>
                 </div>
               ))
+            ) : (
+              <p className="text-gray-500">No stories available.</p>
             )}
           </div>
         </section>

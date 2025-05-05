@@ -2,7 +2,8 @@ import { Config, WagmiProvider } from "wagmi";
 import { darkTheme, defaultConfig, XellarKitProvider } from "@xellar/kit";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { liskSepolia } from "viem/chains";
-const config = defaultConfig({
+// eslint-disable-next-line react-refresh/only-export-components
+export const config = defaultConfig({
   appName: "Xellar",
   // Required for WalletConnect
   walletConnectProjectId: import.meta.env.VITE_WALLET_CONNECT_PROJECT_ID,

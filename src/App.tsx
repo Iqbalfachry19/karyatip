@@ -19,7 +19,7 @@ function App() {
             <Route path="/writing" element={<Writing />} />
             <Route path="/tipWriters" element={<TipWriter />} />
             <Route path="/profile/:name" element={<ProfilePage />} />
-            <Route path="/work/:title" element={<WorkPage />} />
+            <Route path="/work/:id" element={<WorkPage />} />
           </Routes>
         </BrowserRouter>
       </Web3Provider>

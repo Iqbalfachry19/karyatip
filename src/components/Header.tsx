@@ -51,7 +51,7 @@ function Header() {
               >
                 {tab === "writers" && "Discover Writers"}
                 {tab === "writing" && "Write Story"}
-                {tab === "tipWriters" && "Tip & Claim"}
+                {tab === "tipWriters" && "Tip Writer"}
               </NavLink>
             </li>
           ))}

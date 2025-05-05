@@ -24,9 +24,34 @@ export const karyatipABI = [
 						"internalType": "string",
 						"name": "name",
 						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "bio",
+						"type": "string"
 					}
 				],
 				"name": "AuthorRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newBio",
+						"type": "string"
+					}
+				],
+				"name": "BioUpdated",
 				"type": "event"
 			},
 			{
@@ -65,6 +90,12 @@ export const karyatipABI = [
 					},
 					{
 						"indexed": false,
+						"internalType": "uint256",
+						"name": "workId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
 						"internalType": "string",
 						"name": "title",
 						"type": "string"
@@ -90,8 +121,18 @@ export const karyatipABI = [
 				"name": "authors",
 				"outputs": [
 					{
+						"internalType": "address",
+						"name": "authorAddress",
+						"type": "address"
+					},
+					{
 						"internalType": "string",
 						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "bio",
 						"type": "string"
 					},
 					{
@@ -109,6 +150,109 @@ export const karyatipABI = [
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getAllAuthorsBasicInfo",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "addresses",
+						"type": "address[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "names",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "bios",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "totalTips",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllAuthorsWorks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalTips",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct KaryaTip.Work[]",
+						"name": "works",
+						"type": "tuple[]"
+					},
+					{
+						"internalType": "address[]",
+						"name": "owners",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAllWorks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalTips",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct KaryaTip.Work[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -119,8 +263,18 @@ export const karyatipABI = [
 				"name": "getAuthor",
 				"outputs": [
 					{
+						"internalType": "address",
+						"name": "authorAddress",
+						"type": "address"
+					},
+					{
 						"internalType": "string",
 						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "bio",
 						"type": "string"
 					},
 					{
@@ -131,6 +285,11 @@ export const karyatipABI = [
 					{
 						"components": [
 							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
 								"internalType": "string",
 								"name": "title",
 								"type": "string"
@@ -139,6 +298,11 @@ export const karyatipABI = [
 								"internalType": "string",
 								"name": "content",
 								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalTips",
+								"type": "uint256"
 							}
 						],
 						"internalType": "struct KaryaTip.Work[]",
@@ -150,10 +314,110 @@ export const karyatipABI = [
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getAuthorAddresses",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					}
+				],
+				"name": "getWorksByAuthor",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalTips",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct KaryaTip.Work[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					}
+				],
+				"name": "rankWorks",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "title",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalTips",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct KaryaTip.Work[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
 						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_bio",
 						"type": "string"
 					}
 				],
@@ -199,6 +463,29 @@ export const karyatipABI = [
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "workIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "tipAuthorWork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "tipToken",
 				"outputs": [
@@ -209,6 +496,19 @@ export const karyatipABI = [
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_newBio",
+						"type": "string"
+					}
+				],
+				"name": "updateBio",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 ] as const;

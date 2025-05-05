@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import TipButton from "../components/TipButton";
-import ZKProofForm from "../components/ZKProofForm";
+import { useLocation } from "react-router-dom";
+// import ZKProofForm from "../components/ZKProofForm";
 // import ClaimButton from "../components/ClaimButton";
 
 function TipWriter() {
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const addressFromQuery = params.get("address");
   const [writerAddress, setWriterAddress] = useState<string | null>(null);
-
+  useEffect(() => {
+    if (addressFromQuery) {
+      setWriterAddress(addressFromQuery);
+    }
+  }, [addressFromQuery]);
   const [activeTab] = useState<"writers" | "writing" | "tipWriters">(
     "tipWriters"
   );
@@ -30,6 +38,7 @@ function TipWriter() {
               <input
                 type="text"
                 placeholder="0x..."
+                value={writerAddress || ""}
                 className="w-full p-3 border border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-400"
                 onChange={(e) => setWriterAddress(e.target.value)}
               />
@@ -40,9 +49,9 @@ function TipWriter() {
                 <div className="mt-4">
                   <TipButton writerAddress={writerAddress} />
                 </div>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <ZKProofForm writerAddress={writerAddress} />
-                </div>
+                </div> */}
                 {/* <div className="mt-4">
                   <ClaimButton writerAddress={writerAddress} />
                 </div> */}
