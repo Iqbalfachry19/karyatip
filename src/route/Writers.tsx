@@ -94,7 +94,12 @@ function Writers() {
                   <h3 className="text-xl font-semibold text-orange-600">
                     {writer.name}
                   </h3>
-                  <p className="text-gray-500 text-sm mb-2">{writer.address}</p>
+                  <p
+                    className="text-gray-500 text-sm mb-2 truncate w-full"
+                    title={writer.address}
+                  >
+                    {writer.address}
+                  </p>
                   <p className="text-sm text-gray-700 italic mb-1">
                     {writer.bio}
                   </p>

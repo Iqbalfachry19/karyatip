@@ -95,8 +95,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ title }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-50 rounded-lg shadow-lg">
-      <div className="flex space-x-4 mb-6">
+    <div className=" p-6 bg-gray-50 rounded-lg shadow-lg">
+      <div className="md:flex md:space-y-0 space-y-2 w-3xs  space-x-4 mb-6">
         <button
           onClick={() => applyStyle("bold")}
           className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
@@ -153,7 +153,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ title }) => {
       </div> */}
       <div
         ref={editorRef}
-        className="relative p-6 border border-gray-300 rounded-lg min-h-[300px] text-gray-900 bg-white overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="relative md:w-full w-3xs p-6 border border-gray-300 rounded-lg min-h-[300px] text-gray-900 bg-white overflow-auto focus:outline-none focus:ring-2 focus:ring-blue-500"
         contentEditable
         suppressContentEditableWarning
         data-placeholder="Start typing your rich content here..."

@@ -160,10 +160,10 @@ function Writing() {
       )}
 
       {/* Main Writing UI */}
-      <main className="max-w-4xl mx-auto px-4 py-6">
+      <main className="min-h-screen flex flex-col min-w-screen px-4 sm:px-6 py-6">
         {isRegistered && activeTab === "writing" && (
-          <section className="bg-white p-6 rounded-xl shadow-md space-y-6">
-            <h2 className="text-3xl font-bold text-orange-600">
+          <section className="bg-white  p-4 sm:p-6 rounded-xl shadow-md space-y-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-orange-600">
               Start Writing
             </h2>
 
@@ -175,9 +175,9 @@ function Writing() {
               <input
                 type="text"
                 placeholder="Enter story title"
-                className="w-full p-3 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
-                value={storyTitle} // Binding title state
-                onChange={(e) => setStoryTitle(e.target.value)} // Update title state
+                className="w-full p-2 sm:p-3 border border-orange-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                value={storyTitle}
+                onChange={(e) => setStoryTitle(e.target.value)}
               />
             </div>
 
@@ -186,7 +186,7 @@ function Writing() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Story Content
               </label>
-              <div className="border border-orange-300 rounded-lg">
+              <div className="border  border-orange-300 rounded-lg">
                 <RichTextEditor title={storyTitle} />
               </div>
             </div>
