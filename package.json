@@ -22,6 +22,7 @@
     "@xellar/kit": "^2.0.6",
     "dompurify": "^3.2.5",
     "draft-js": "^0.11.7",
+    "lucide-react": "^0.507.0",
     "pinata": "^2.2.1",
     "prosemirror-model": "^1.25.1",
     "prosemirror-state": "^1.4.3",
