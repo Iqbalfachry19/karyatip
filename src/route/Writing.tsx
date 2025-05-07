@@ -160,9 +160,9 @@ function Writing() {
       )}
 
       {/* Main Writing UI */}
-      <main className="min-h-screen flex flex-col min-w-screen px-4 sm:px-6 py-6">
+      <main className="min-h-screen  min-w-screen px-4 sm:px-6 py-6">
         {isRegistered && activeTab === "writing" && (
-          <section className="bg-white  p-4 sm:p-6 rounded-xl shadow-md space-y-6">
+          <section className="bg-white max-w-4xl mx-auto items-center  p-4 sm:p-6 rounded-xl shadow-md space-y-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-orange-600">
               Start Writing
             </h2>
