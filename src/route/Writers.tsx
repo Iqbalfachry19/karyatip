@@ -85,70 +85,76 @@ function Writers() {
         {activeTab === "writers" && (
           <section>
             <h2 className="text-2xl font-semibold mb-4">Writers</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {writers.map((writer) => (
-                <div
-                  key={writer.id}
-                  className="bg-white rounded-xl p-5 shadow-sm hover:shadow-lg transition"
-                >
-                  <h3 className="text-xl font-semibold text-orange-600">
-                    {writer.name}
-                  </h3>
-                  <p
-                    className="text-gray-500 text-sm mb-2 truncate w-full"
-                    title={writer.address}
+            {writers.length === 0 ? (
+              <p className="text-gray-500 text-center">No writers available.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {writers.map((writer) => (
+                  <div
+                    key={writer.id}
+                    className="bg-white rounded-xl p-5 shadow-sm hover:shadow-lg transition"
                   >
-                    {writer.address}
-                  </p>
-                  <p className="text-sm text-gray-700 italic mb-1">
-                    {writer.bio}
-                  </p>
-                  <p className="text-gray-700 font-medium mt-3 mb-1">
-                    Notable Works:
-                  </p>
-                  <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
-                    {writer.works.length === 0 ? (
-                      <li>No works available</li>
-                    ) : (
-                      writer.works.map((work: Work, idx: number) => (
-                        <li
-                          key={idx}
-                          className="cursor-pointer hover:underline"
-                          onClick={() =>
-                            navigate(
-                              `/work/${encodeURIComponent(work.id.toString())}`
-                            )
-                          }
-                        >
-                          {work.title}
-                        </li>
-                      ))
-                    )}
-                  </ul>
+                    <h3 className="text-xl font-semibold text-orange-600">
+                      {writer.name}
+                    </h3>
+                    <p
+                      className="text-gray-500 text-sm mb-2 truncate w-full"
+                      title={writer.address}
+                    >
+                      {writer.address}
+                    </p>
+                    <p className="text-sm text-gray-700 italic mb-1">
+                      {writer.bio}
+                    </p>
+                    <p className="text-gray-700 font-medium mt-3 mb-1">
+                      Notable Works:
+                    </p>
+                    <ul className="list-disc list-inside text-sm text-gray-600 mb-4">
+                      {writer.works.length === 0 ? (
+                        <li>No works available</li>
+                      ) : (
+                        writer.works.map((work: Work, idx: number) => (
+                          <li
+                            key={idx}
+                            className="cursor-pointer hover:underline"
+                            onClick={() =>
+                              navigate(
+                                `/work/${encodeURIComponent(
+                                  work.id.toString()
+                                )}`
+                              )
+                            }
+                          >
+                            {work.title}
+                          </li>
+                        ))
+                      )}
+                    </ul>
 
-                  <div className="space-x-2">
-                    <button
-                      onClick={() =>
-                        navigate(
-                          `/profile/${encodeURIComponent(writer.address)}`
-                        )
-                      }
-                      className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
-                    >
-                      View Profile
-                    </button>
-                    <button
-                      onClick={() =>
-                        navigate(`/tipWriters?address=${writer.address}`)
-                      }
-                      className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
-                    >
-                      Tip
-                    </button>
+                    <div className="space-x-2">
+                      <button
+                        onClick={() =>
+                          navigate(
+                            `/profile/${encodeURIComponent(writer.address)}`
+                          )
+                        }
+                        className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
+                      >
+                        View Profile
+                      </button>
+                      <button
+                        onClick={() =>
+                          navigate(`/tipWriters?address=${writer.address}`)
+                        }
+                        className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600"
+                      >
+                        Tip
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </section>
         )}
       </main>

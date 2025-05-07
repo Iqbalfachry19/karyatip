@@ -93,6 +93,25 @@ export const karyatipABI = [
 						"internalType": "uint256",
 						"name": "workId",
 						"type": "uint256"
+					}
+				],
+				"name": "WorkDeleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "workId",
+						"type": "uint256"
 					},
 					{
 						"indexed": false,
@@ -108,6 +127,37 @@ export const karyatipABI = [
 					}
 				],
 				"name": "WorkSubmitted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "workId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newTitle",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "newContent",
+						"type": "string"
+					}
+				],
+				"name": "WorkUpdated",
 				"type": "event"
 			},
 			{
@@ -147,6 +197,19 @@ export const karyatipABI = [
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "workId",
+						"type": "uint256"
+					}
+				],
+				"name": "deleteWork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -202,6 +265,11 @@ export const karyatipABI = [
 								"internalType": "uint256",
 								"name": "totalTips",
 								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "author",
+								"type": "address"
 							}
 						],
 						"internalType": "struct KaryaTip.Work[]",
@@ -242,6 +310,11 @@ export const karyatipABI = [
 								"internalType": "uint256",
 								"name": "totalTips",
 								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "author",
+								"type": "address"
 							}
 						],
 						"internalType": "struct KaryaTip.Work[]",
@@ -303,6 +376,11 @@ export const karyatipABI = [
 								"internalType": "uint256",
 								"name": "totalTips",
 								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "author",
+								"type": "address"
 							}
 						],
 						"internalType": "struct KaryaTip.Work[]",
@@ -357,6 +435,11 @@ export const karyatipABI = [
 								"internalType": "uint256",
 								"name": "totalTips",
 								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "author",
+								"type": "address"
 							}
 						],
 						"internalType": "struct KaryaTip.Work[]",
@@ -398,6 +481,11 @@ export const karyatipABI = [
 								"internalType": "uint256",
 								"name": "totalTips",
 								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "author",
+								"type": "address"
 							}
 						],
 						"internalType": "struct KaryaTip.Work[]",
@@ -507,6 +595,29 @@ export const karyatipABI = [
 					}
 				],
 				"name": "updateBio",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "workId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "newTitle",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "newContent",
+						"type": "string"
+					}
+				],
+				"name": "updateWork",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"

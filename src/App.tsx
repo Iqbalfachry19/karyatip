@@ -7,7 +7,9 @@ import WorkPage from "./route/Works";
 import Writing from "./route/Writing";
 import TipWriter from "./route/TipWriter";
 import Writers from "./route/Writers";
+import EditWorkPage from "./route/EditWork"; // Import the new edit page component
 import { ThirdwebProvider } from "thirdweb/react";
+
 function App() {
   return (
     <ThirdwebProvider>
@@ -20,6 +22,8 @@ function App() {
             <Route path="/tipWriters" element={<TipWriter />} />
             <Route path="/profile/:name" element={<ProfilePage />} />
             <Route path="/work/:id" element={<WorkPage />} />
+            <Route path="/writers/edit/:id" element={<EditWorkPage />} />{" "}
+            {/* New route for editing work */}
           </Routes>
         </BrowserRouter>
       </Web3Provider>
