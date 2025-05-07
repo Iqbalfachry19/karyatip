@@ -20,7 +20,7 @@ export const ConnectedButton: React.FC<{
 
   return (
     <button
-      className=" text-white px-4 py-2 rounded-lg cursor-pointer"
+      className=" text-white bg-orange-500 px-4 py-2 rounded-lg cursor-pointer"
       onClick={onClick}
     >
       {truncateAddress(address ?? "")} - {Number(formatted).toLocaleString()}{" "}

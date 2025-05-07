@@ -57,6 +57,11 @@ function Writing() {
       setShowModal(false);
     }
   }, [data]);
+  useEffect(() => {
+    if (data?.[4] === false) {
+      setShowModal(true);
+    }
+  }, [data]);
 
   useEffect(() => {
     if (!address || (isSuccess && data && data[0] === "")) {
@@ -72,7 +77,7 @@ function Writing() {
 
       {showModal && (
         <div className="fixed inset-0 bg-transparent backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl shadow-lg max-w-md w-full text-center space-y-4 border border-orange-200">
+          <div className="bg-white mx-2 p-6 rounded-xl shadow-lg max-w-md w-full text-center space-y-4 border border-orange-200">
             {/* Modal for Wallet Not Connected */}
             {!address ? (
               <>
@@ -92,7 +97,7 @@ function Writing() {
                     if (!isConnected) {
                       return (
                         <button
-                          className="text-white"
+                          className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm"
                           onClick={openConnectModal}
                         >
                           Connect Wallet

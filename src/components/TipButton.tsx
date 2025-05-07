@@ -89,7 +89,7 @@ const TipButton: React.FC<TipButtonProps> = ({ writerAddress }) => {
         onClick={handleApprove}
         disabled={isPending || approved}
         className={`w-full py-2 mb-2 ${
-          approved ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+          approved ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"
         } text-white font-semibold rounded-md`}
       >
         {approved ? "Approved" : "Approve"}
@@ -98,7 +98,7 @@ const TipButton: React.FC<TipButtonProps> = ({ writerAddress }) => {
         onClick={handleTip}
         disabled={!approved}
         className={`w-full py-2 ${
-          approved ? "bg-indigo-600 hover:bg-indigo-700" : "bg-gray-400"
+          approved ? "bg-orange-500 hover:bg-orange-600" : "bg-gray-400"
         } text-white font-semibold rounded-md`}
       >
         Send Tip

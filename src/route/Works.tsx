@@ -74,13 +74,14 @@ const WorkPage = () => {
   return (
     <div className="min-h-screen min-w-screen bg-orange-50 text-gray-800 font-sans">
       <Header />
-      <section className="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-2xl shadow-lg">
-        {/* Title & Author */}
-        <div className="space-y-1 mb-6">
-          <h1 className="text-4xl font-extrabold text-orange-600">
-            {decodedTitle}
-          </h1>
-          {/* <div className="flex items-center gap-3 text-sm text-gray-500">
+      <div className="max-w-3xl mx-auto">
+        <section className="mx-2  mt-10 bg-white p-8 rounded-2xl shadow-lg">
+          {/* Title & Author */}
+          <div className="space-y-1 mb-6">
+            <h1 className="text-4xl font-extrabold text-orange-600">
+              {decodedTitle}
+            </h1>
+            {/* <div className="flex items-center gap-3 text-sm text-gray-500">
             <div className="w-8 h-8 rounded-full bg-orange-200 flex items-center justify-center font-bold text-orange-600">
               {authorName.charAt(0)}
             </div>
@@ -89,21 +90,22 @@ const WorkPage = () => {
               <div className="text-xs">{authorAddress}</div>
             </div>
           </div> */}
-        </div>
+          </div>
 
-        {/* Render sanitized rich content */}
-        <div
-          className="prose max-w-none text-gray-700 leading-relaxed mb-8"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-        ></div>
+          {/* Render sanitized rich content */}
+          <div
+            className="prose max-w-none text-gray-700 leading-relaxed mb-8"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          ></div>
 
-        <button
-          onClick={() => navigate(`/writers`)}
-          className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition"
-        >
-          Back
-        </button>
-      </section>
+          <button
+            onClick={() => navigate(`/writers`)}
+            className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition"
+          >
+            Back
+          </button>
+        </section>
+      </div>
     </div>
   );
 };

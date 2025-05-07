@@ -99,31 +99,31 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ title }) => {
       <div className="md:flex md:space-y-0 space-y-2 w-3xs  space-x-4 mb-6">
         <button
           onClick={() => applyStyle("bold")}
-          className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+          className="px-4 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded"
         >
           <strong>B</strong>
         </button>
         <button
           onClick={() => applyStyle("italic")}
-          className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+          className="px-4 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded"
         >
           <em>I</em>
         </button>
         <button
           onClick={() => applyStyle("underline")}
-          className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+          className="px-4 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded"
         >
           <u>U</u>
         </button>
         <button
           onClick={insertLink}
-          className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700"
+          className="px-4 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded"
         >
           Link
         </button>
         <button
           onClick={insertImage}
-          className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700"
+          className="px-4 py-2 text-white bg-orange-500 hover:bg-orange-600 rounded"
         >
           Image
         </button>
@@ -177,7 +177,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ title }) => {
       <div className="mt-6 flex justify-center">
         <button
           onClick={handleSave}
-          className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+          className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg  transition duration-200"
           disabled={isLoading}
         >
           {isLoading ? "Saving..." : "Save Content"}
