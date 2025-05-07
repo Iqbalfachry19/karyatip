@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Web3Provider } from "./config/Web3Provider";
 import Home from "./route/Home";
@@ -12,7 +12,7 @@ function App() {
   return (
     <ThirdwebProvider>
       <Web3Provider>
-        <HashRouter>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/writers" element={<Writers />} />
@@ -21,7 +21,7 @@ function App() {
             <Route path="/profile/:name" element={<ProfilePage />} />
             <Route path="/work/:id" element={<WorkPage />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
       </Web3Provider>
     </ThirdwebProvider>
   );
