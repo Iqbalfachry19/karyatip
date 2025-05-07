@@ -4,7 +4,7 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4a90e2",
+  "theme_color": "#ff6900",
   "description": "A decentralized platform for tipping and supporting writers",
   "icons": [
     {
