@@ -13,8 +13,9 @@ function Header() {
     <header className="sticky z-50 top-0 bg-white shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <h1
-          className="text-2xl font-bold text-orange-600 cursor-pointer"
+          className="text-2xl font-bold text-orange-600 cursor-pointer select-none"
           onClick={() => navigate("/")}
+          onCopy={(e) => e.preventDefault()} // prevent copy
         >
           KaryaTip
         </h1>
