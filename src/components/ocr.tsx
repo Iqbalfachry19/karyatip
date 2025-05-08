@@ -9,10 +9,13 @@ export default function KtpOcr({
   const [, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [underage, setUnderage] = useState(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      setUnderage(false);
+      setMessage("");
       setImage(file);
       runOCR(file);
     } else {
@@ -31,8 +34,16 @@ export default function KtpOcr({
 
       const dobMatch = text.match(/\b\d{2}[-/.]\d{2}[-/.]\d{4}\b/);
       if (dobMatch) {
-        onExtractBirthdate(dobMatch[0]);
-        setMessage(`Birthdate found: ${dobMatch[0]}`);
+        const birthdateStr = dobMatch[0].replace(/[-/.]/g, "-");
+        const [day, month, year] = birthdateStr.split("-");
+        const birthdate = new Date(`${year}-${month}-${day}`);
+        const age = calculateAge(birthdate);
+
+        onExtractBirthdate(birthdateStr);
+        setMessage(`Birthdate found: ${birthdateStr}`);
+        if (age < 18) {
+          setUnderage(true);
+        }
       } else {
         setMessage("Birthdate not found.");
       }
@@ -41,6 +52,16 @@ export default function KtpOcr({
       setMessage("Failed to process the image.");
     }
     setLoading(false);
+  };
+
+  const calculateAge = (birthDate: Date) => {
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
   };
 
   return (
@@ -61,6 +82,11 @@ export default function KtpOcr({
       )}
       {!loading && message && (
         <p className="text-sm text-gray-700">{message}</p>
+      )}
+      {underage && (
+        <p className="text-sm text-red-600 font-semibold">
+          ❌ You are not 18 yet.
+        </p>
       )}
     </div>
   );
