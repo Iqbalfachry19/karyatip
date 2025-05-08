@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+zk/target
 
 # Editor directories and files
 .vscode/*

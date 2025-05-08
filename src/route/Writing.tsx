@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import RichTextEditor from "../components/RichTextEditor";
-
+import { UltraHonkBackend } from "@aztec/bb.js";
+import { CompiledCircuit, Noir } from "@noir-lang/noir_js";
+import zk from "../assets/zk.json";
 import { karyatipABI } from "../utils/abi";
 import { KARYATIP_ADDRESS } from "../constants";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
@@ -9,10 +11,12 @@ import { Address } from "viem";
 import { ConnectButton } from "@xellar/kit";
 import { ConnectedButton } from "../components/ConnectedButton";
 import { useNavigate } from "react-router-dom";
+import KtpOcr from "../components/ocr";
 
 function Writing() {
   const navigate = useNavigate();
   const [activeTab] = useState<"writers" | "writing" | "tipWriters">("writing");
+  const [isProofValid, setIsProofValid] = useState(false);
 
   const [isRegistered, setIsRegistered] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -138,11 +142,48 @@ function Writing() {
                         rows={3}
                         className="w-full px-3 py-2 border border-orange-300 rounded-md"
                       />
+                      <KtpOcr
+                        onExtractBirthdate={async (dob) => {
+                          const year = dob
+                            ?.split("-")
+                            .find((part) => part.length === 4);
+
+                          if (!year) {
+                            console.error("Year not found in date of birth.");
+                            setIsProofValid(false);
+                            return;
+                          }
+
+                          try {
+                            const noir = new Noir(zk as CompiledCircuit);
+                            const backend = new UltraHonkBackend(zk.bytecode);
+
+                            const input = {
+                              birth_year: year,
+                              current_year: new Date().getFullYear().toString(),
+                            };
+
+                            const { witness } = await noir.execute(input);
+                            const proof = await backend.generateProof(witness);
+                            const isValid = await backend.verifyProof(proof);
+
+                            setIsProofValid(isValid); // ✅ Update proof status
+                            console.log(
+                              `Proof is ${isValid ? "valid" : "invalid"}... ✅`
+                            );
+                          } catch (e) {
+                            console.log("error", e);
+                            setIsProofValid(false);
+                          }
+                        }}
+                      />
 
                       <button
                         onClick={register}
                         className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 disabled:opacity-50"
-                        disabled={!authorName.trim() || isRegistering}
+                        disabled={
+                          !authorName.trim() || isRegistering || !isProofValid
+                        }
                       >
                         {isRegistering
                           ? "Registering..."

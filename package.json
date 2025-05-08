@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aztec/bb.js": "0.82.2",
+    "@noir-lang/backend_barretenberg": "^0.36.0",
+    "@noir-lang/noir_js": "1.0.0-beta.3",
     "@tailwindcss/vite": "^4.1.4",
     "@tanstack/react-query": "^5.74.4",
     "@tinymce/tinymce-react": "^6.1.0",
@@ -33,6 +36,7 @@
     "slate": "^0.112.0",
     "slate-react": "^0.112.1",
     "tailwindcss": "^4.1.4",
+    "tesseract.js": "^6.0.1",
     "thirdweb": "^5.96.7",
     "viem": "^2.27.2",
     "wagmi": "^2.14.16"
