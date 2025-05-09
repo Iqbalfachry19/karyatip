@@ -11,6 +11,27 @@ KaryaTip is a Web3-powered platform that allows readers to support writers direc
 * 🗃️ Writer profiles with bios and a list of published works
 * 🌐 Fully decentralized with Web3 integration
 
+# 🛠️ Tech Stack
+
+Frontend
+
+React.js – Component-based UI framework
+Tailwind CSS – Utility-first CSS framework for styling
+React Router DOM – Declarative routing for React
+State Management
+
+React Hooks – useState, useEffect for local state and side effects
+Web3 & Blockchain
+
+IDRX, LISK SEPOLIA, XELLAR KIT – Crypto assets and networks for tipping
+Wallet Integration – Web3 wallet support for tipping authors
+Noir – Zero-knowledge proof system used for privacy-preserving age verification
+Other
+
+Vite – Fast build tool for development
+Markdown/Editor Tools – Rich text editor for publishing stories
+
+
 🧠 Work Done During NoirHack
 
 During NoirHack, we implemented a writer age verification feature using Noir-based
