@@ -1,24 +1,20 @@
-# ✍️ KaryaTip
+## ✍️ KaryaTip
 
-**KaryaTip** adalah platform Web3 untuk mendukung para penulis dengan memberikan apresiasi secara langsung melalui tip. Pengguna dapat membaca karya-karya inspiratif, membagikan cerita mereka sendiri, dan memberi dukungan kepada penulis favorit mereka.
+KaryaTip is a Web3-powered platform that allows readers to support writers directly through crypto tips while preserving privacy using zero-knowledge proofs. Users can discover inspiring stories, publish their own, and tip their favorite writers in a decentralized way.
 
-## 🚀 Fitur Utama
+## 🚀 Key Features
 
-- 📚 Jelajahi karya tulis dari berbagai penulis
-- ✍️ Tulis dan publikasikan cerita Anda sendiri
-- 💸 Berikan tip kepada penulis melalui dompet crypto
-- 🧑‍💼 Profil penulis dengan daftar karya yang telah dipublikasikan
-- 🌐 Desentralisasi menggunakan teknologi Web3
+📚 Browse a variety of stories from independent writers
+✍️ Publish your own stories via a rich text editor
+🧑‍💼 Register as a writer with age verification using ZK (without exposing your birth year)
+💸 Tip your favorite authors using your crypto wallet
+🗃️ Writer profiles with bios and a list of published works
+🌐 Fully decentralized with Web3 integration
+🧠 Work Done During NoirHack
 
-## 🛠️ Teknologi yang Digunakan
+During NoirHack, we implemented a writer age verification feature using Noir-based
 
-- **Frontend**: React.js, Tailwind CSS
-- **Routing**: React Router DOM
-- **State Management**: useState, useEffect (React Hooks)
-- **Crypto Integration**: IDRX, LISK SEPOLIA, XELLAR KIT
-
-
-## 📦 Instalasi
+## 📦 Instalation
 
 ```bash
 git clone https://github.com/username/karyatip.git
