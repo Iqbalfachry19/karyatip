@@ -4,12 +4,12 @@ KaryaTip is a Web3-powered platform that allows readers to support writers direc
 
 ## 🚀 Key Features
 
-📚 Browse a variety of stories from independent writers
-✍️ Publish your own stories via a rich text editor
-🧑‍💼 Register as a writer with age verification using ZK (without exposing your birth year)
-💸 Tip your favorite authors using your crypto wallet
-🗃️ Writer profiles with bios and a list of published works
-🌐 Fully decentralized with Web3 integration
+* 📚 Browse a variety of stories from independent writers
+* ✍️ Publish your own stories via a rich text editor
+* 🧑‍💼 Register as a writer with age verification using ZK (without exposing your birth year)
+* 💸 Tip your favorite authors using your crypto wallet
+* 🗃️ Writer profiles with bios and a list of published works
+* 🌐 Fully decentralized with Web3 integration
 
 🧠 Work Done During NoirHack
 
