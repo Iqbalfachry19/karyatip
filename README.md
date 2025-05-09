@@ -15,21 +15,18 @@ KaryaTip is a Web3-powered platform that allows readers to support writers direc
 
 Frontend
 
-React.js – Component-based UI framework
-Tailwind CSS – Utility-first CSS framework for styling
-React Router DOM – Declarative routing for React
+* React.js – Component-based UI framework
+* Tailwind CSS – Utility-first CSS framework for styling
+* React Router DOM – Declarative routing for React
+  
 State Management
 
-React Hooks – useState, useEffect for local state and side effects
+* React Hooks – useState, useEffect for local state and side effects
+  
 Web3 & Blockchain
 
-IDRX, LISK SEPOLIA, XELLAR KIT – Crypto assets and networks for tipping
-Wallet Integration – Web3 wallet support for tipping authors
-Noir – Zero-knowledge proof system used for privacy-preserving age verification
-Other
-
-Vite – Fast build tool for development
-Markdown/Editor Tools – Rich text editor for publishing stories
+* IDRX, LISK SEPOLIA, XELLAR KIT – Crypto assets and networks for tipping
+* Noir – Zero-knowledge proof system used for privacy-preserving age verification
 
 
 🧠 Work Done During NoirHack
