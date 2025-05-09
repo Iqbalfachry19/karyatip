@@ -10,6 +10,7 @@ KaryaTip is a Web3-powered platform that allows readers to support writers direc
 💸 Tip your favorite authors using your crypto wallet
 🗃️ Writer profiles with bios and a list of published works
 🌐 Fully decentralized with Web3 integration
+
 🧠 Work Done During NoirHack
 
 During NoirHack, we implemented a writer age verification feature using Noir-based
