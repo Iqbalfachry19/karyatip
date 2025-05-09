@@ -10,11 +10,13 @@ export default function KtpOcr({
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [underage, setUnderage] = useState(false);
+  const [verified, setVerified] = useState(false);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       setUnderage(false);
+      setVerified(false);
       setMessage("");
       setImage(file);
       runOCR(file);
@@ -43,6 +45,10 @@ export default function KtpOcr({
         setMessage(`Birthdate found: ${birthdateStr}`);
         if (age < 18) {
           setUnderage(true);
+          setVerified(false);
+        } else {
+          setUnderage(false);
+          setVerified(true);
         }
       } else {
         setMessage("Birthdate not found.");
@@ -86,6 +92,11 @@ export default function KtpOcr({
       {underage && (
         <p className="text-sm text-red-600 font-semibold">
           ❌ You are not 18 yet.
+        </p>
+      )}
+      {verified && (
+        <p className="text-sm text-green-600 font-semibold">
+          ✅ You are 18 or older. Proof verified.
         </p>
       )}
     </div>

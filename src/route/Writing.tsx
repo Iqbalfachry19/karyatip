@@ -17,6 +17,7 @@ function Writing() {
   const navigate = useNavigate();
   const [activeTab] = useState<"writers" | "writing" | "tipWriters">("writing");
   const [isProofValid, setIsProofValid] = useState(false);
+  const [proofBlobUrl, setProofBlobUrl] = useState<string | null>(null);
 
   const [isRegistered, setIsRegistered] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -167,6 +168,16 @@ function Writing() {
                             const proof = await backend.generateProof(witness);
                             const isValid = await backend.verifyProof(proof);
 
+                            setIsProofValid(isValid);
+
+                            if (isValid) {
+                              const blob = new Blob([JSON.stringify(proof)], {
+                                type: "application/json",
+                              });
+                              const url = URL.createObjectURL(blob);
+                              setProofBlobUrl(url);
+                            }
+
                             setIsProofValid(isValid); // ✅ Update proof status
                             console.log(
                               `Proof is ${isValid ? "valid" : "invalid"}... ✅`
@@ -177,6 +188,15 @@ function Writing() {
                           }
                         }}
                       />
+                      {isProofValid && proofBlobUrl && (
+                        <a
+                          href={proofBlobUrl}
+                          download="zkProof.json"
+                          className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 text-center"
+                        >
+                          Download Proof
+                        </a>
+                      )}
 
                       <button
                         onClick={register}
