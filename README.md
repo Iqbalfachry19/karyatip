@@ -14,7 +14,7 @@ KaryaTip is a Web3-powered platform that allows readers to support writers direc
 
 During NoirHack, we implemented a writer age verification feature using Noir-based
 
-## 📦 Instalation
+## 📦 Installation
 
 ```bash
 git clone https://github.com/username/karyatip.git
