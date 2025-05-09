@@ -31,7 +31,7 @@ Web3 & Blockchain
 
 🧠 Work Done During NoirHack
 
-During NoirHack, we implemented a writer age verification feature using Noir-based
+During NoirHack, i make a new project that is karyatip, i implemented a writer age verification feature using Noir-based
 
 ## 📦 Installation
 
