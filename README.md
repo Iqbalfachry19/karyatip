@@ -27,11 +27,7 @@ Web3 & Blockchain
 
 * IDRX, LISK SEPOLIA, XELLAR KIT – Crypto assets and networks for tipping
 * Noir – Zero-knowledge proof system used for privacy-preserving age verification
-
-
-🧠 Work Done During NoirHack
-
-During NoirHack, i make a new project that is karyatip, i implemented a writer age verification feature using Noir-based
+* OCR model for KTP Image text recognition
 
 ## 📦 Installation
 
